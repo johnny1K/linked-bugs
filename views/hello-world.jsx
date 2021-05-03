@@ -43,6 +43,7 @@ const head = createHead();
 // toDo: useEffect vs. receiving props
 // a loading state would be nice too :)
 const LinkedBugsList = (linkedBugDetails) => {
+  // toDo: use state to enable dynamic table as per task description
   const [useBugs, setUseBugs] = useState(linkedBugDetails);
 
   const rows = Object.values(useBugs).map(
