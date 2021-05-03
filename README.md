@@ -3,7 +3,7 @@
 This addon is based on [ACE Express template](https://bitbucket.org/atlassian/atlassian-connect-express-template/src/master/views/), 3 to 4 beers and a lot of joy learning :)
 
 1. Clone the repo
-   `git clone ...`
+   `git clone https://github.com/johnny1K/linked-bugs.git`
 
 2. Install dependencies
    `npm i`
