@@ -1,0 +1,30 @@
+{
+    "key": "bugs",
+    "name": "Linked Bugs",
+    "description": "Linked Bugs Demo App",
+    "baseUrl": "{{localBaseUrl}}",
+    "authentication": {
+        "type": "jwt"
+    },
+    "lifecycle": {
+        "installed": "installed"
+    },
+    "scopes": [
+        "READ"
+    ],
+    "modules": {
+        "webPanels": [
+            {
+                "key": "linked-bugs",
+                "location": "atl.jira.view.issue.left.context",
+                "name": {
+                    "value": "Linked bugs"
+                },
+                "url": "/hello-world",
+                "conditions": [{
+                    "condition": "user_is_logged_in"
+                }]
+            }
+        ]
+    }
+}
