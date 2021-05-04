@@ -1,6 +1,6 @@
-## Installation
+This app is based on [ACE Express template](https://bitbucket.org/atlassian/atlassian-connect-express-template/src/master/views/), 3 to 4 beers and a lot of joy learning :)
 
-This addon is based on [ACE Express template](https://bitbucket.org/atlassian/atlassian-connect-express-template/src/master/views/), 3 to 4 beers and a lot of joy learning :)
+## Installation
 
 1. Clone the repo
    `git clone https://github.com/johnny1K/linked-bugs.git`
