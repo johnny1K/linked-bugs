@@ -14,9 +14,6 @@ This app is based on [ACE Express template](https://bitbucket.org/atlassian/atla
 4. Run
    `npm run start`
 
-Unforutnately the ACE auto addon de-register did not work for me.
-Better luck next time ;)
-
 5. Load addon in Jira instance
 
 - After running `npm start` locate the line which starts with `Local tunnel established...`
