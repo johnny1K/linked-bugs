@@ -15,8 +15,7 @@ This app is based on [ACE Express template](https://bitbucket.org/atlassian/atla
    `npm run start`
 
 5. Load addon in Jira instance
-
-- After running `npm start` locate the line which starts with `Local tunnel established...`
-- Copy the `https://xxxxxx.ngrok.io/` URL
-- Go to Jira > Apps > Manage Your Apps > Upload app
-- Paste the copied URL into the input field and hit `Upload`
+  - After running `npm start` locate the line which starts with `Local tunnel established...`
+  - Copy the `https://xxxxxx.ngrok.io/` URL
+  - Go to Jira > Apps > Manage Your Apps > Upload app
+  - Paste the copied URL into the input field and hit `Upload`
