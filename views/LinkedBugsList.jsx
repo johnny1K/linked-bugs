@@ -22,32 +22,29 @@ const LinkedBugsList = () => {
   };
 
   const rows = Object.values(useBugs).map(
-    ({ id, summary, created, assignee, status, priority }) => {
-      const key = `row-${id}`;
-      return {
-        key,
-        cells: [
-          {
-            content: summary,
-          },
-          {
-            content: created,
-          },
-          {
-            content: assignee,
-          },
-          {
-            content: status,
-          },
-          {
-            content: priority,
-          },
-          {
-            content: <a onClick={() => handleDeleteRowClick(id)}>x</a>,
-          },
-        ],
-      };
-    }
+    ({ id, summary, created, assignee, status, priority }) => ({
+      key: `row-${id}`,
+      cells: [
+        {
+          content: summary,
+        },
+        {
+          content: created,
+        },
+        {
+          content: assignee,
+        },
+        {
+          content: status,
+        },
+        {
+          content: priority,
+        },
+        {
+          content: <a onClick={() => handleDeleteRowClick(id)}>x</a>,
+        },
+      ],
+    })
   );
 
   return (
