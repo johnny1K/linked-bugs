@@ -31,6 +31,10 @@ const createHead = () => {
         shouldTruncate: true,
         isSortable: true,
       },
+      {
+        key: "actions",
+        content: "",
+      },
     ],
   };
 };

@@ -5,7 +5,6 @@ import { getLinkedBugs } from "./lib/getLinkedBugs";
 import { head } from "./lib/getTableHeader";
 
 const LinkedBugsList = () => {
-  // toDo: use state to enable dynamic table
   const [useBugs, setUseBugs] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -18,10 +17,15 @@ const LinkedBugsList = () => {
     getBugs();
   }, []);
 
+  const handleDeleteRowClick = (bugId) => {
+    setUseBugs([...useBugs].filter((bug) => bug.id !== bugId));
+  };
+
   const rows = Object.values(useBugs).map(
-    ({ summary, created, assignee, status, priority }, index) => {
+    ({ id, summary, created, assignee, status, priority }, index) => {
+      const key = `row-${index}`;
       return {
-        key: `row-${index}`,
+        key,
         cells: [
           {
             content: summary,
@@ -37,6 +41,9 @@ const LinkedBugsList = () => {
           },
           {
             content: priority,
+          },
+          {
+            content: <a onClick={() => handleDeleteRowClick(id)}>x</a>,
           },
         ],
       };

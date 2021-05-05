@@ -36,6 +36,7 @@ const getBugDetails = async ({ inwardIssue }) => {
   const { fields } = JSON.parse(response.body)
 
   return ({
+    id: inwardIssue.id,
     summary: fields.summary,
     created: new Date(fields.created).toUTCString(),
     assignee: fields.assignee?.displayName,
