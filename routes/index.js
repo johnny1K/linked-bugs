@@ -5,7 +5,7 @@ export default function routes (app, addon) {
 
   app.get('/linked-bugs', addon.authenticate(), (req, res) => {
     res.render(
-      'linked-bugs.jsx', 
+      'LinkedBugsList.jsx', 
     );
   });
 }
