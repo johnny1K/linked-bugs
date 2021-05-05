@@ -16,55 +16,13 @@
   <script src="{{reactDomSource}}"></script>
   <script id="__root_component_script" src="{{rootComponentSource}}" data-props="{{props}}"></script>
   <script>
-    const getLinkedBugsList = async () => {
-      const { jira: { issue: contextIssue } } = await AP.context.getContext()
-      const issueLinksResponse = await AP.request({
-        url: `/rest/api/latest/issue/${contextIssue.key}?fields=issuelinks`,
-      })
-      const { fields: { issuelinks: linkedBugsList } } = JSON.parse(issueLinksResponse.body);
-
-      return linkedBugsList
-    }
-
-    const getLinkedBugsDetails = issueArr => {
-      const linkedBugsDetailPromises = issueArr.map(
-        // toDo: pending condition
-        // if (issue.issuetype.name !== 'Bug') return
-        getBugDetails
-      )
-      return Promise.all(linkedBugsDetailPromises)
-    }
-
-    (async () => {
-      try {
-        const linkedBugsList = await getLinkedBugsList()
-        const linkedBugsDetails = await getLinkedBugsDetails(linkedBugsList)
-
-        ReactDOM.render(
-          React.createElement(window.__root_component.default, linkedBugsDetails),
-          document.getElementById('content')
-        );
-      } catch (e) {
-        // toDo: handle error
-        console.error(e)
-      }
-    })();
-
-    const getBugDetails = async ({ inwardIssue }) => {
-      const response = await AP.request({
-        url: `/rest/api/latest/issue/${inwardIssue.key}`,
-      })
-      const { fields } = JSON.parse(response.body);
-
-      return ({
-        summary: fields.summary,
-        created: new Date(fields.created).toUTCString(),
-        assignee: fields.assignee?.displayName,
-        status: fields.status.name,
-        priority: fields.priority.name,
-      })
-    }
+    var props = JSON.parse(document.getElementById('__root_component_script').getAttribute('data-props'));
+    {{#if browserOnly}}
+    ReactDOM.render(React.createElement(window.__root_component.default, props), document.getElementById('content'));
+    {{else}}
+    ReactDOM.hydrate(React.createElement(window.__root_component.default, props), document.getElementById('content'));
   </script>
+  {{/if}}
 </body>
 
 </html>

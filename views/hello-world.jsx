@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import "regenerator-runtime/runtime.js";
+import React, { useEffect, useState } from "react";
 import DynamicTable from "@atlaskit/dynamic-table";
+import { getLinkedBugs } from "./lib/getLinkedBugs";
 
 const createHead = () => {
   return {
@@ -40,13 +42,20 @@ const createHead = () => {
 
 const head = createHead();
 
-// toDo: useEffect vs. receiving props
-// a loading state would be nice too :)
-const LinkedBugsList = (linkedBugDetails) => {
+const LinkedBugsList = () => {
   // toDo: use state to enable dynamic table
-  const [useBugs, setUseBugs] = useState(linkedBugDetails);
+  const [useBugRows, setUseBugRows] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
-  const rows = Object.values(useBugs).map(
+  useEffect(() => {
+    async function getBugs() {
+      setUseBugRows(await getLinkedBugs());
+      setIsLoading(false);
+    }
+    getBugs();
+  }, []);
+
+  const rows = Object.values(useBugRows).map(
     ({ summary, created, assignee, status, priority }, index) => {
       return {
         key: `row-${index}`,
@@ -71,11 +80,7 @@ const LinkedBugsList = (linkedBugDetails) => {
     }
   );
 
-  return rows.length > 0 ? (
-    <DynamicTable head={head} rows={rows} />
-  ) : (
-    <div>Loading or there are no linked bugs... :)</div>
-  );
+  return <DynamicTable head={head} rows={rows} isLoading={isLoading} />;
 };
 
 export default LinkedBugsList;
