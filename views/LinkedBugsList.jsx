@@ -1,5 +1,6 @@
 import "regenerator-runtime/runtime.js";
 import React, { useEffect, useState } from "react";
+import Button from "@atlaskit/button";
 import DynamicTable from "@atlaskit/dynamic-table";
 import { getLinkedBugs } from "./lib/getLinkedBugs";
 import { head } from "./lib/getTableHeader";
@@ -41,7 +42,7 @@ const LinkedBugsList = () => {
           content: priority,
         },
         {
-          content: <a onClick={() => handleDeleteRowClick(id)}>x</a>,
+          content: <Button onClick={() => handleDeleteRowClick(id)}>X</Button>,
         },
       ],
     })
