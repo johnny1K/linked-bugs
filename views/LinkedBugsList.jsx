@@ -18,7 +18,6 @@ const LinkedBugsList = () => {
     getBugs();
   }, []);
 
-  // toDo: fix empty state
   const rows = Object.values(useBugs).map(
     ({ summary, created, assignee, status, priority }, index) => {
       return {
@@ -44,7 +43,15 @@ const LinkedBugsList = () => {
     }
   );
 
-  return <DynamicTable head={head} rows={rows} isLoading={isLoading} />;
+  return (
+    <DynamicTable
+      head={head}
+      rows={rows}
+      isLoading={isLoading}
+      loadingSpinnerSize="small"
+      emptyView={"No linked bugs found."}
+    />
+  );
 };
 
 export default LinkedBugsList;
