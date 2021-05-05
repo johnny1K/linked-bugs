@@ -20,9 +20,9 @@ const getLinkedBugsDetails = issueArr => {
 export const getLinkedBugs = async () => {
   try {
     const linkedBugsList = await getLinkedBugsList()
-    const linkedBugsDetails = await getLinkedBugsDetails(linkedBugsList)
+    const linkedBugs = await getLinkedBugsDetails(linkedBugsList)
 
-    return linkedBugsDetails
+    return linkedBugs
   } catch (e) {
     // toDo: handle error
     console.error(e)
