@@ -2,23 +2,24 @@ import "regenerator-runtime/runtime.js";
 import React, { useEffect, useState } from "react";
 import DynamicTable from "@atlaskit/dynamic-table";
 import { getLinkedBugs } from "./lib/getLinkedBugs";
-import { head } from './lib/getTableHeader';
+import { head } from "./lib/getTableHeader";
 
 const LinkedBugsList = () => {
   // toDo: use state to enable dynamic table
-  const [useBugRows, setUseBugRows] = useState({});
+  const [useBugs, setUseBugs] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function getBugs() {
-      setUseBugRows(await getLinkedBugs());
+      const bugs = await getLinkedBugs();
+      setUseBugs(bugs);
       setIsLoading(false);
     }
     getBugs();
   }, []);
 
   // toDo: fix empty state
-  const rows = Object.values(useBugRows).map(
+  const rows = Object.values(useBugs).map(
     ({ summary, created, assignee, status, priority }, index) => {
       return {
         key: `row-${index}`,
