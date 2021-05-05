@@ -20,7 +20,7 @@
                 "name": {
                     "value": "Linked bugs"
                 },
-                "url": "/hello-world",
+                "url": "/linked-bugs",
                 "conditions": [{
                     "condition": "user_is_logged_in"
                 }]
