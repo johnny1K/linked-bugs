@@ -3,7 +3,7 @@ const getLinkedBugsList = async () => {
   const issueLinksResponse = await AP.request({
     url: `/rest/api/latest/issue/${contextIssue.key}?fields=issuelinks`,
   })
-  const { fields: { issuelinks: linkedBugsList } } = JSON.parse(issueLinksResponse.body);
+  const { fields: { issuelinks: linkedBugsList } } = JSON.parse(issueLinksResponse.body)
 
   return linkedBugsList
 }
@@ -33,7 +33,7 @@ const getBugDetails = async ({ inwardIssue }) => {
   const response = await AP.request({
     url: `/rest/api/latest/issue/${inwardIssue.key}`,
   })
-  const { fields } = JSON.parse(response.body);
+  const { fields } = JSON.parse(response.body)
 
   return ({
     summary: fields.summary,
