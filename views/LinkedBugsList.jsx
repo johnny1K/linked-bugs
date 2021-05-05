@@ -22,8 +22,8 @@ const LinkedBugsList = () => {
   };
 
   const rows = Object.values(useBugs).map(
-    ({ id, summary, created, assignee, status, priority }, index) => {
-      const key = `row-${index}`;
+    ({ id, summary, created, assignee, status, priority }) => {
+      const key = `row-${id}`;
       return {
         key,
         cells: [
